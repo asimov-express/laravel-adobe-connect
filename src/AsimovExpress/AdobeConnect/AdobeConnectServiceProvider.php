@@ -1,6 +1,6 @@
 <?php
 
-namespace AsimovExpress\AdobeConnect\Providers;
+namespace AsimovExpress\AdobeConnect;
 
 use Illuminate\Support\ServiceProvider;
 use AdobeConnect\Config;

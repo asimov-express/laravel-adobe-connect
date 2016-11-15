@@ -23,9 +23,9 @@ class AdobeConnectServiceProvider extends ServiceProvider {
     public function register() {
         $this->app->singleton('AdobeConnect', function ($app) {
             $config = $app['config'];
-            $host = $config->get('adobe.host');
-            $username = $config->get('adobe.username');
-            $password = $config->get('adobe.password');
+            $host = $config->get('laravel-adobe-connect::host');
+            $username = $config->get('laravel-adobe-connect::username');
+            $password = $config->get('laravel-adobe-connect::password');
 
             $config = new Config($host, $username, $password);
             return new ApiClient($config);

@@ -1,0 +1,22 @@
+{
+    "name": "asimov-express/laravel-adobe-connect",
+    "description": "Thin wrapper for platforg/adobe-connect to publish it as a Singleton Service Provider in Laravel 4.2",
+    "authors": [
+        {
+            "name": "Jorge Sanchez",
+            "email": "jorge.sanchez.h@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "platforg/adobe-connect": "^0.1.1",
+        "illuminate/support": "~4.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "AsimovExpress\\AdobeConnect": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

@@ -21,7 +21,7 @@ class AdobeConnectServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app->singleton('AdobeConnect', function ($app) {
+        $this->app->singleton('AdobeConnect\ApiClient', function ($app) {
             $config = $app['config'];
             $host = $config->get('laravel-adobe-connect::host');
             $username = $config->get('laravel-adobe-connect::username');
@@ -38,7 +38,7 @@ class AdobeConnectServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides(){
-        return array('adobeconnect');
+        return array('AdobeConnect\ApiClient');
     }
 
 }

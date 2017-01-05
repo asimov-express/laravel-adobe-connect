@@ -25,14 +25,14 @@ class AdobeConnectServiceProvider extends ServiceProvider {
             'asimov-express/laravel-adobe-connect',
             __DIR__ . '/../../config'
         );
-        $this->app->singleton('AdobeConnect\ApiClient', function ($app) {
+        $this->app->singleton('AdobeConnect\AdobeConnectClient', function ($app) {
             $config = $app['config'];
             $host = $config->get('laravel-adobe-connect::config.host');
             $username = $config->get('laravel-adobe-connect::config.username');
             $password = $config->get('laravel-adobe-connect::config.password');
 
             $adobeConfig = new Config($host, $username, $password);
-            return new ApiClient($adobeConfig);
+            return new AdobeConnectClient($adobeConfig);
         });
     }
 
@@ -42,7 +42,7 @@ class AdobeConnectServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides(){
-        return array('AdobeConnect\ApiClient');
+        return array('AdobeConnect\AdobeConnectClient');
     }
 
 }

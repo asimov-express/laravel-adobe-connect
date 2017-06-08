@@ -3,6 +3,7 @@
 namespace AsimovExpress\AdobeConnect;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 use AdobeConnect\Config;
 use AdobeConnect\ApiClient;
 
@@ -16,23 +17,35 @@ class AdobeConnectServiceProvider extends ServiceProvider {
     protected $defer = true;
 
     /**
+     * Perform post-registration booting of services.
+     */
+    public function boot() {
+        $this->publishes([
+            __DIR__ . '/../../config/adobe-connect.php' => config_path('adobe-connect.php'),
+        ], 'config');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register() {
-        $this->app['config']->package(
-            'asimov-express/laravel-adobe-connect',
-            __DIR__ . '/../../config'
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/adobe-connect.php', 'adobe-connect'
         );
-        $this->app->singleton('AdobeConnect\AdobeConnectClient', function ($app) {
-            $config = $app['config'];
-            $host = $config->get('laravel-adobe-connect::config.host');
-            $username = $config->get('laravel-adobe-connect::config.username');
-            $password = $config->get('laravel-adobe-connect::config.password');
+
+        $this->app->singleton('AsimovExpress\AdobeConnect\AdobeConnectClient', function ($app) {
+            $host = config('adobe-connect.host');
+            $username = config('adobe-connect.username');
+            $password = config('adobe-connect.password');
 
             $adobeConfig = new Config($host, $username, $password);
             return new AdobeConnectClient($adobeConfig);
+        });
+
+        App::bind('adobe-connect', function(){
+            return App::make('AsimovExpress\AdobeConnect\AdobeConnectClient');
         });
     }
 
@@ -42,7 +55,7 @@ class AdobeConnectServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides(){
-        return array('AdobeConnect\AdobeConnectClient');
+        return ['AsimovExpress\AdobeConnect\AdobeConnectClient'];
     }
 
 }

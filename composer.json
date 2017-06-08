@@ -14,8 +14,8 @@
     },
     "license": "MIT",
     "autoload": {
-        "psr-0": {
-            "AsimovExpress\\AdobeConnect": "src/"
+        "psr-4": {
+            "AsimovExpress\\AdobeConnect": "src/AsimovExpress/AdobeConnect"
         }
     },
     "minimum-stability": "dev"

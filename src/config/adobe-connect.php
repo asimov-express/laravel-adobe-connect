@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     /*
     |--------------------------------------------------------------------------
     | Adobe Connect Hostname
@@ -44,5 +44,5 @@ return array(
     */
 
     'password' => env('ADOBE_CONNECT_PASSWORD', ''),
-);
+];
  ?>

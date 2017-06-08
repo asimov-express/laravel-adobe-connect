@@ -1,6 +1,6 @@
 {
     "name": "asimov-express/laravel-adobe-connect",
-    "description": "Adobe Connect Integration for Laravel 4.2",
+    "description": "Adobe Connect Integration for Laravel 5.*",
     "authors": [
         {
             "name": "Jorge Sanchez",
@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4.0",
         "platforg/adobe-connect": "^0.1.1",
-        "illuminate/support": "~4.2"
+        "illuminate/support": "~5.*"
     },
     "license": "MIT",
     "autoload": {
